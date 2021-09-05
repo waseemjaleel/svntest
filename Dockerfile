@@ -42,3 +42,4 @@ EXPOSE 3000
 
 
 ENTRYPOINT [ "./TechChallengeApp" ]
+CMD ["serve"]
