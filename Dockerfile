@@ -47,7 +47,7 @@ COPY --from=build /swagger.json ./assets/swagger/swagger.json
 COPY --from=build /TechChallengeApp  TechChallengeApp
 EXPOSE 3000
 #EXPOSE 3000
-#EXPOSE 80 2222
+EXPOSE 80 
 
 RUN apk add --no-cache curl git alpine-sdk
 
