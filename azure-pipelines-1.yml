@@ -3,16 +3,16 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/docker
 
 trigger:
-- none
+- master
 
 resources:
 - repo: self
 
 variables:
   # Container registry service connection established during pipeline creation
-  dockerRegistryServiceConnection: '5f832159-33b7-4797-a814-d4a7af72fc44'
-  imageRepository: 'waseemjaleelsvntest'
-  containerRegistry: 'wjtestacr.azurecr.io'
+  dockerRegistryServiceConnection: '711a8fe1-b096-4407-b776-e4246675b4f4'
+  imageRepository: 'svntacimg01'
+  containerRegistry: 'svntcaacr01.azurecr.io'
   dockerfilePath: '$(Build.SourcesDirectory)/Dockerfile'
   tag: 'latest'
 
