@@ -7,6 +7,8 @@ RUN apk add --no-cache postgresql
 RUN apk add openssh \
      && echo "root:Docker!" | chpasswd 
 
+RUN apk add --no-cache curl git alpine-sdk
+
 ENV POSTGRES_PASSWORD=potgres
 ENV POSTGRES_USER=postgres
 
@@ -43,7 +45,7 @@ COPY conf.toml ./conf.toml
 COPY --from=build /tmp/swagger/dist ./assets/swagger
 COPY --from=build /swagger.json ./assets/swagger/swagger.json
 COPY --from=build /TechChallengeApp  TechChallengeApp
-EXPOSE 8000
+EXPOSE 9000
 #EXPOSE 3000
 #EXPOSE 80 2222
 
