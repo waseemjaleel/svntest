@@ -3,6 +3,10 @@ FROM golang:alpine AS build
 RUN apk add --no-cache curl git alpine-sdk
 RUN apk add --no-cache postgresql
 
+# Install OpenSSH and set the password for root to "Docker!". In this example, "apk add" is the install instruction for an Alpine Linux-based image.
+RUN apk add openssh \
+     && echo "root:Docker!" | chpasswd 
+
 ENV POSTGRES_PASSWORD=potgres
 ENV POSTGRES_USER=postgres
 
@@ -30,6 +34,8 @@ RUN swagger generate spec -o /swagger.json
 FROM alpine:latest
 
 WORKDIR /TechChallengeApp
+# Copy the sshd_config file to the /etc/ssh/ directory
+COPY sshd_config /etc/ssh/
 
 COPY assets ./assets
 COPY conf.toml ./conf.toml
@@ -37,9 +43,19 @@ COPY conf.toml ./conf.toml
 COPY --from=build /tmp/swagger/dist ./assets/swagger
 COPY --from=build /swagger.json ./assets/swagger/swagger.json
 COPY --from=build /TechChallengeApp  TechChallengeApp
-EXPOSE 3000
+EXPOSE 8000
+#EXPOSE 3000
+#EXPOSE 80 2222
 
 
 
 ENTRYPOINT [ "./TechChallengeApp" ]
 CMD ["serve"]
+
+
+
+
+
+
+# Open port 2222 for SSH access
+
