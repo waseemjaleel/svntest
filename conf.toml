@@ -4,4 +4,4 @@
 "DbPort" = "5432"
 "DbHost" = "localhost"
 "ListenHost" = "localhost"
-"ListenPort" = "9002"
+"ListenPort" = "3000"
