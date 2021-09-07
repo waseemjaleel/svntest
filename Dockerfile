@@ -45,7 +45,7 @@ COPY conf.toml ./conf.toml
 COPY --from=build /tmp/swagger/dist ./assets/swagger
 COPY --from=build /swagger.json ./assets/swagger/swagger.json
 COPY --from=build /TechChallengeApp  TechChallengeApp
-EXPOSE 9000
+EXPOSE 9001
 #EXPOSE 3000
 #EXPOSE 80 2222
 
